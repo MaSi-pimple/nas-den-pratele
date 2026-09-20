@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="cs" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Náš Den | Natálie &amp; Matěj</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&family=Parisienne&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        wedding: {
+                            green: '#697460',
+                            olive: '#545540',
+                            brown: '#765E47',
+                            taupe: '#A58F77',
+                            gray: '#AAA096',
+                            sand: '#D1BEA9',
+                            champagne: '#F1E0CA',
+                            cream: '#EFE9DE',
+                            dark: '#3A3A2E',
+                            stone: '#7A7565'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['Montserrat', 'sans-serif'],
+                        script: ['Parisienne', 'cursive']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .font-script-custom {
+            font-family: 'Parisienne', cursive;
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #EFE9DE; }
+        ::-webkit-scrollbar-thumb { background: #A58F77; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #697460; }
+
+        .reveal-element {
+            opacity: 0;
+            transform: translateY(25px) scale(0.98);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+
+        .reveal-element.is-visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    </style>
+</head>
+<body class="bg-wedding-cream text-wedding-dark font-sans antialiased selection:bg-wedding-sand selection:text-wedding-dark">
+
+    <!-- NAVIGATION HEADER -->
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-wedding-cream/90 backdrop-blur-md border-b border-wedding-sand/30 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="#" class="font-script-custom text-3xl md:text-4xl text-wedding-green hover:text-wedding-brown transition">N &amp; M</a>
+
+                <nav class="hidden md:flex space-x-8 text-sm uppercase tracking-widest font-medium">
+                    <a href="#pribeh" class="text-wedding-dark hover:text-wedding-green transition duration-200">Náš Příběh</a>
+                    <a href="#harmonogram" class="text-wedding-dark hover:text-wedding-green transition duration-200">Harmonogram</a>
+                    <a href="#misto" class="text-wedding-dark hover:text-wedding-green transition duration-200">Místo &amp; Info</a>
+                    <a href="#svedci" class="text-wedding-dark hover:text-wedding-green transition duration-200">Svědci</a>
+                    <a href="#dary" class="text-wedding-dark hover:text-wedding-green transition duration-200">Svatební Dar</a>
+                    <a href="#galerie" class="text-wedding-dark hover:text-wedding-green transition duration-200">Galerie</a>
+                    <a href="#rsvp" class="text-wedding-green hover:text-wedding-olive font-semibold transition duration-200">RSVP</a>
+                </nav>
+
+                <button id="mobile-menu-btn" class="md:hidden text-wedding-dark focus:outline-none p-2" aria-label="Otevřít menu">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-wedding-cream border-b border-wedding-sand px-4 pt-2 pb-6 space-y-3 text-center uppercase tracking-wider text-sm">
+            <a href="#pribeh" class="block py-2 text-wedding-dark hover:text-wedding-green">Náš Příběh</a>
+            <a href="#harmonogram" class="block py-2 text-wedding-dark hover:text-wedding-green">Harmonogram</a>
+            <a href="#misto" class="block py-2 text-wedding-dark hover:text-wedding-green">Místo &amp; Info</a>
+            <a href="#svedci" class="block py-2 text-wedding-dark hover:text-wedding-green">Svědci</a>
+            <a href="#dary" class="block py-2 text-wedding-dark hover:text-wedding-green">Svatební Dar</a>
+            <a href="#galerie" class="block py-2 text-wedding-dark hover:text-wedding-green">Galerie</a>
+            <a href="#rsvp" class="block py-2 font-semibold text-wedding-green hover:text-wedding-olive">RSVP</a>
+        </div>
+    </header>
+
+    <main class="pt-20">
+        <!-- SEKTOR 1: ÚVOD (HERO) -->
+        <section id="hero-section" class="relative min-h-[85vh] flex items-center justify-center text-center px-4 py-20 bg-wedding-cream overflow-hidden">
+            <div id="hero-bg-overlay" class="absolute inset-0 bg-cover bg-center pointer-events-none transition-opacity duration-500" style="background-image: url('image/hero.png'); opacity: 0.35;"></div>
+
+            <div class="absolute top-10 left-10 text-wedding-sand/30 text-8xl md:text-9xl pointer-events-none select-none">
+                <i class="fa-solid fa-leaf rotate-45"></i>
+            </div>
+            <div class="absolute bottom-10 right-10 text-wedding-sand/30 text-8xl md:text-9xl pointer-events-none select-none">
+                <i class="fa-solid fa-leaf -rotate-45"></i>
+            </div>
+
+            <div class="relative z-10 max-w-3xl mx-auto space-y-6 reveal-element">
+                <p class="font-script-custom text-5xl sm:text-6xl md:text-7xl text-wedding-green">Bereme se!</p>
+                <h1 class="font-serif text-5xl sm:text-7xl md:text-8xl font-normal text-wedding-dark tracking-wide uppercase">Natálie &amp; Matěj</h1>
+                
+                <div class="flex items-center justify-center space-x-4 py-2">
+                    <span class="h-[1px] w-12 sm:w-20 bg-wedding-taupe"></span>
+                    <p class="text-base sm:text-xl uppercase tracking-[0.25em] text-wedding-brown font-light">26. Června 2027</p>
+                    <span class="h-[1px] w-12 sm:w-20 bg-wedding-taupe"></span>
+                </div>
+                
+                <p class="text-wedding-olive text-lg sm:text-xl font-serif">Bechnerův statek, Lány</p>
+
+                <div class="pt-8 pb-4">
+                    <div id="countdown" class="grid grid-cols-4 gap-2 sm:gap-4 max-w-lg mx-auto">
+                        <div class="bg-wedding-champagne/80 backdrop-blur border border-wedding-sand p-3 sm:p-4 rounded-xl shadow-sm">
+                            <span id="cd-days" class="block font-serif text-2xl sm:text-4xl font-bold text-wedding-olive">00</span>
+                            <span class="text-[10px] sm:text-xs uppercase tracking-widest text-wedding-brown">Dní</span>
+                        </div>
+                        <div class="bg-wedding-champagne/80 backdrop-blur border border-wedding-sand p-3 sm:p-4 rounded-xl shadow-sm">
+                            <span id="cd-hours" class="block font-serif text-2xl sm:text-4xl font-bold text-wedding-olive">00</span>
+                            <span class="text-[10px] sm:text-xs uppercase tracking-widest text-wedding-brown">Hodin</span>
+                        </div>
+                        <div class="bg-wedding-champagne/80 backdrop-blur border border-wedding-sand p-3 sm:p-4 rounded-xl shadow-sm">
+                            <span id="cd-minutes" class="block font-serif text-2xl sm:text-4xl font-bold text-wedding-olive">00</span>
+                            <span class="text-[10px] sm:text-xs uppercase tracking-widest text-wedding-brown">Minut</span>
+                        </div>
+                        <div class="bg-wedding-champagne/80 backdrop-blur border border-wedding-sand p-3 sm:p-4 rounded-xl shadow-sm">
+                            <span id="cd-seconds" class="block font-serif text-2xl sm:text-4xl font-bold text-wedding-olive">00</span>
+                            <span class="text-[10px] sm:text-xs uppercase tracking-widest text-wedding-brown">Sekund</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-4">
+                    <a href="#rsvp" class="inline-block bg-wedding-green text-wedding-cream hover:bg-wedding-olive px-8 py-3.5 rounded-full uppercase tracking-widest text-xs font-semibold shadow-md transition duration-300 transform hover:-translate-y-0.5">
+                        Potvrdit Účast (RSVP)
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEKTOR 2: NÁŠ PŘÍBĚH -->
+        <section id="pribeh" class="py-20 px-4 bg-wedding-cream border-t border-wedding-champagne">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-16 space-y-2 reveal-element">
+                    <p class="font-script-custom text-4xl sm:text-5xl text-wedding-green">Přirozeně &amp; s láskou</p>
+                    <h2 class="font-serif text-3xl sm:text-5xl uppercase tracking-wider text-wedding-dark">Náš Příběh</h2>
+                    <div class="w-16 h-0.5 bg-wedding-taupe mx-auto mt-4"></div>
+                </div>
+
+                <div class="space-y-12 relative">
+                    <!-- Podsekce 1 -->
+                    <div class="relative flex flex-col sm:flex-row items-center justify-between group reveal-element">
+                        <div class="w-full sm:w-1/2 sm:pr-8 sm:text-right mb-4 sm:mb-0">
+                            <span class="text-xs font-semibold uppercase tracking-widest text-wedding-taupe">2022</span>
+                            <h3 class="font-serif text-2xl text-wedding-brown font-semibold mt-1">A tak to začalo</h3>
+                            <p class="text-xs sm:text-sm text-wedding-stone mt-2 leading-relaxed">Jedna z našich prvních společných fotek. Tehdy jsme ještě netušili, kolik společných výletů, dovolených a zážitků nás čeká.</p>
+                        </div>
+                        <div class="hidden sm:flex absolute left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-wedding-champagne border-2 border-wedding-green items-center justify-center text-wedding-green text-xs shadow z-10">
+                            <i class="fa-solid fa-heart"></i>
+                        </div>
+                        <div class="w-full sm:w-1/2 sm:pl-8">
+                            <div class="rounded-2xl overflow-hidden shadow-md bg-wedding-champagne" style="aspect-ratio: 4 / 3;">
+                                <img src="image/pribeh1.jpeg" alt="A tak to začalo" class="w-full h-full object-cover transition-transform duration-500">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Podsekce 2 -->
+                    <div class="relative flex flex-col sm:flex-row items-center justify-between group reveal-element">
+                        <div class="w-full sm:w-1/2 sm:pl-8 sm:order-2 mb-4 sm:mb-0">
+                            <span class="text-xs font-semibold uppercase tracking-widest text-wedding-taupe">2023</span>
+                            <h3 class="font-serif text-2xl text-wedding-brown font-semibold mt-1">První společná dovolená</h3>
+                            <p class="text-xs sm:text-sm text-wedding-stone mt-2 leading-relaxed">První cesta ve dvou a zároveň rok, kdy už jsme spolu sdíleli i jeden domov. Zkrátka jsme zjistili, že nám to spolu funguje nejen na dovolené.</p>
+                        </div>
+                        <div class="hidden sm:flex absolute left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-wedding-champagne border-2 border-wedding-green items-center justify-center text-wedding-green text-xs shadow z-10">
+                            <i class="fa-solid fa-heart"></i>
+                        </div>
+                        <div class="w-full sm:w-1/2 sm:pr-8 sm:order-1">
+                            <div class="grid grid-cols-2 gap-2">
+                                <div class="rounded-2xl overflow-hidden shadow-md bg-wedding-champagne" style="aspect-ratio: 3 / 4;">
+                                    <img src="image/pribeh2.jpeg" alt="První společná dovolená" class="w-full h-full object-cover transition-transform duration-500">
+                                </div>
+                                <div class="rounded-2xl overflow-hidden shadow-md bg-wedding-champagne" style="aspect-ratio: 3 / 4;">
+                                    <img src="image/pribeh3.jpeg" alt="První společná dovolená" class="w-full h-full object-cover transition-transform duration-500">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Podsekce 3 -->
+                    <div class="relative flex flex-col sm:flex-row items-center justify-between group reveal-element">
+                        <div class="w-full sm:w-1/2 sm:pr-8 sm:text-right mb-4 sm:mb-0">
+                            <span class="text-xs font-semibold uppercase tracking-widest text-wedding-taupe">2024</span>
+                            <h3 class="font-serif text-2xl text-wedding-brown font-semibold mt-1">Další rok, další dobrodružství</h3>
+                            <p class="text-xs sm:text-sm text-wedding-stone mt-2 leading-relaxed">Cestování se rychle stalo jednou z našich nejoblíbenějších společných věcí. A tak jsme zase vyrazili objevovat další místa a sbírat společné vzpomínky.</p>
+                        </div>
+                        <div class="hidden sm:flex absolute left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-wedding-champagne border-2 border-wedding-green items-center justify-center text-wedding-green text-xs shadow z-10">
+                            <i class="fa-solid fa-heart"></i>
+                        </div>
+                        <div class="w-full sm:w-1/2 sm:pl-8">
+                            <div class="grid grid-cols-2 gap-2">
+                                <div class="rounded-2xl overflow-hidden shadow-md bg-wedding-champagne" style="aspect-ratio: 3 / 4;">
+                                    <img src="image/pribeh4.jpeg" alt="Další rok, další dobrodružství" class="w-full h-full object-cover transition-transform duration-500">
+                                </div>
+                                <div class="rounded-2xl overflow-hidden shadow-md bg-wedding-champagne" style="aspect-ratio: 3 / 4;">
+                                    <img src="image/pribeh5.jpeg" alt="Další rok, další dobrodružství" class="w-full h-full object-cover transition-transform duration-500">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Podsekce 4 -->
+                    <div class="relative flex flex-col sm:flex-row items-center justify-between group reveal-element">
+                        <div class="w-full sm:w-1/2 sm:pl-8 sm:order-2 mb-4 sm:mb-0">
+                            <span class="text-xs font-semibold uppercase tracking-widest text-wedding-taupe">2025</span>
+                            <h3 class="font-serif text-2xl text-wedding-brown font-semibold mt-1">Naše společné Vánoce</h3>
+                            <p class="text-xs sm:text-sm text-wedding-stone mt-2 leading-relaxed">Mezi všemi cestami přišly i chvíle, kdy nám bylo nejlépe jednoduše doma. Vánoce už byly prostě naše.</p>
+                        </div>
+                        <div class="hidden sm:flex absolute left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-wedding-champagne border-2 border-wedding-green items-center justify-center text-wedding-green text-xs shadow z-10">
+                            <i class="fa-solid fa-heart"></i>
+                        </div>
+                        <div class="w-full sm:w-1/2 sm:pr-8 sm:order-1">
+                            <div class="rounded-2xl overflow-hidden shadow-md bg-wedding-champagne" style="aspect-ratio: 4 / 3;">
+                                <img src="image/pribeh6.jpeg" alt="Naše společné Vánoce" class="w-full h-full object-cover transition-transform duration-500">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Podsekce 5 -->
+                    <div class="relative flex flex-col sm:flex-row items-center justify-between group reveal-element">
+                        <div class="w-full sm:w-1/2 sm:pr-8 sm:text-right mb-4 sm:mb-0">
+                            <span class="text-xs font-semibold uppercase tracking-widest text-wedding-taupe">Duben 2026</span>
+                            <h3 class="font-serif text-2xl text-wedding-brown font-semibold mt-1">Pořád spolu, pořád někam vyrážíme</h3>
+                            <p class="text-xs sm:text-sm text-wedding-stone mt-2 leading-relaxed">Po několika společných letech už jsme věděli, že nejde jen o dovolené a hezké fotky. Tohle už byl prostě náš společný život.</p>
+                        </div>
+                        <div class="hidden sm:flex absolute left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-wedding-champagne border-2 border-wedding-green items-center justify-center text-wedding-green text-xs shadow z-10">
+                            <i class="fa-solid fa-heart"></i>
+                        </div>
+                        <div class="w-full sm:w-1/2 sm:pl-8">
+                            <div class="rounded-2xl overflow-hidden shadow-md bg-wedding-champagne" style="aspect-ratio: 3 / 4;">
+                                <img src="image/pribeh7.jpeg" alt="Pořád spolu, pořád někam vyrážíme" class="w-full h-full object-cover transition-transform duration-500">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Podsekce 6 -->
+                    <div class="relative flex flex-col sm:flex-row items-center justify-between group reveal-element">
+                        <div class="w-full sm:w-1/2 sm:pl-8 sm:order-2 mb-4 sm:mb-0">
+                            <span class="text-xs font-semibold uppercase tracking-widest text-wedding-taupe">19. srpen 2026</span>
+                            <h3 class="font-serif text-2xl text-wedding-brown font-semibold mt-1">Řekla jsem ANO</h3>
+                            <p class="text-xs sm:text-sm text-wedding-stone mt-2 leading-relaxed">Na další společné dovolené přišla otázka, která všechno posunula zase o kus dál. A odpověď byla jasná. ❤️</p>
+                        </div>
+                        <div class="hidden sm:flex absolute left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-wedding-champagne border-2 border-wedding-green items-center justify-center text-wedding-green text-xs shadow z-10">
+                            <i class="fa-solid fa-heart"></i>
+                        </div>
+                        <div class="w-full sm:w-1/2 sm:pr-8 sm:order-1">
+                            <div class="grid grid-cols-2 gap-2">
+                                <div class="rounded-2xl overflow-hidden shadow-md bg-wedding-champagne" style="aspect-ratio: 9 / 16;">
+                                    <img src="image/pribeh8.jpeg" alt="Řekla jsem ANO" class="w-full h-full object-cover transition-transform duration-500">
+                                </div>
+                                <div class="rounded-2xl overflow-hidden shadow-md bg-wedding-champagne" style="aspect-ratio: 9 / 16;">
+                                    <img src="image/pribeh9.jpeg" alt="Řekla jsem ANO" class="w-full h-full object-cover transition-transform duration-500">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Podsekce 7 -->
+                    <div class="relative flex flex-col sm:flex-row items-center justify-between group reveal-element">
+                        <div class="w-full sm:w-1/2 sm:pr-8 sm:text-right mb-4 sm:mb-0">
+                            <span class="text-xs font-semibold uppercase tracking-widest text-wedding-taupe">26. červen 2027</span>
+                            <h3 class="font-serif text-2xl text-wedding-brown font-semibold mt-1"></h3>
+                            <p class="text-xs sm:text-sm text-wedding-stone mt-2 leading-relaxed">A teď už zbývá jen říct ano podruhé. Tentokrát před Vámi všemi.</p>
+                        </div>
+                        <div class="hidden sm:flex absolute left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-wedding-champagne border-2 border-wedding-green items-center justify-center text-wedding-green text-xs shadow z-10">
+                            <i class="fa-solid fa-heart"></i>
+                        </div>
+                        <div class="w-full sm:w-1/2 sm:pl-8">
+                            <div class="rounded-2xl overflow-hidden shadow-md bg-wedding-champagne" style="aspect-ratio: 3 / 4;">
+                                <img src="image/pribeh10.png" alt="Svatba" class="w-full h-full object-cover transition-transform duration-500">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEKTOR 3: HARMONOGRAM DNE -->
+        <section id="harmonogram" class="py-20 px-4 bg-wedding-champagne/30">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 space-y-2 reveal-element">
+                    <p class="font-script-custom text-4xl sm:text-5xl text-wedding-green">Jak bude probíhat</p>
+                    <h2 class="font-serif text-3xl sm:text-5xl uppercase tracking-wider text-wedding-dark">Harmonogram Dne</h2>
+                    <div class="w-16 h-0.5 bg-wedding-taupe mx-auto mt-4"></div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-wedding-cream p-6 rounded-2xl border border-wedding-sand/40 text-center space-y-3 shadow-sm hover:shadow-md transition reveal-element">
+                        <div class="w-12 h-12 rounded-full bg-wedding-champagne text-wedding-green flex items-center justify-center mx-auto text-xl">
+                            <i class="fa-solid fa-car"></i>
+                        </div>
+                        <span class="text-xs uppercase tracking-widest font-bold text-wedding-taupe">10:45 - 11:15</span>
+                        <h3 class="font-serif text-xl font-bold text-wedding-dark">Příjezd Hostů</h3>
+                        <p class="text-xs text-wedding-stone leading-relaxed">Vítání hostů, lehké občerstvení a welcome drink.</p>
+                    </div>
+
+                    <div class="bg-wedding-cream p-6 rounded-2xl border border-wedding-sand/40 text-center space-y-3 shadow-sm hover:shadow-md transition reveal-element">
+                        <div class="w-12 h-12 rounded-full bg-wedding-champagne text-wedding-green flex items-center justify-center mx-auto text-xl">
+                            <i class="fa-solid fa-bell"></i>
+                        </div>
+                        <span class="text-xs uppercase tracking-widest font-bold text-wedding-taupe">11:15 - 11:30</span>
+                        <h3 class="font-serif text-xl font-bold text-wedding-dark">Řazení hostů k obřadu</h3>
+                        <p class="text-xs text-wedding-stone leading-relaxed">Usazování, čekání na ženicha a nevěstu.</p>
+                    </div>
+
+                    <div class="bg-wedding-cream p-6 rounded-2xl border border-wedding-sand/40 text-center space-y-3 shadow-sm hover:shadow-md transition reveal-element">
+                        <div class="w-12 h-12 rounded-full bg-wedding-champagne text-wedding-green flex items-center justify-center mx-auto text-xl">
+                            <i class="fa-solid fa-church"></i>
+                        </div>
+                        <span class="text-xs uppercase tracking-widest font-bold text-wedding-taupe">11:30 - 12:30</span>
+                        <h3 class="font-serif text-xl font-bold text-wedding-dark">Svatební obřad</h3>
+                        <p class="text-xs text-wedding-stone leading-relaxed">Slavnostní řeknutí ANO, házení kyticí.</p>
+                    </div>
+
+                    <div class="bg-wedding-cream p-6 rounded-2xl border border-wedding-sand/40 text-center space-y-3 shadow-sm hover:shadow-md transition reveal-element">
+                        <div class="w-12 h-12 rounded-full bg-wedding-champagne text-wedding-green flex items-center justify-center mx-auto text-xl">
+                            <i class="fa-solid fa-camera"></i>
+                        </div>
+                        <span class="text-xs uppercase tracking-widest font-bold text-wedding-taupe">12:30 - 13:00</span>
+                        <h3 class="font-serif text-xl font-bold text-wedding-dark">Svatební focení</h3>
+                        <p class="text-xs text-wedding-stone leading-relaxed">Společné svatební focení, skupinové focení s rodinou/přáteli.</p>
+                    </div>
+
+                    <div class="bg-wedding-cream p-6 rounded-2xl border border-wedding-sand/40 text-center space-y-3 shadow-sm hover:shadow-md transition reveal-element">
+                        <div class="w-12 h-12 rounded-full bg-wedding-champagne text-wedding-green flex items-center justify-center mx-auto text-xl">
+                            <i class="fa-solid fa-utensils"></i>
+                        </div>
+                        <span class="text-xs uppercase tracking-widest font-bold text-wedding-taupe">13:00 - 14:30</span>
+                        <h3 class="font-serif text-xl font-bold text-wedding-dark">Svatební oběd</h3>
+                        <p class="text-xs text-wedding-stone leading-relaxed">Tradiční slavnostní oběd, tradiční zvyklosti.</p>
+                    </div>
+
+                    <div class="bg-wedding-cream p-6 rounded-2xl border border-wedding-sand/40 text-center space-y-3 shadow-sm hover:shadow-md transition reveal-element">
+                        <div class="w-12 h-12 rounded-full bg-wedding-champagne text-wedding-green flex items-center justify-center mx-auto text-xl">
+                            <i class="fa-solid fa-cake-candles"></i>
+                        </div>
+                        <span class="text-xs uppercase tracking-widest font-bold text-wedding-taupe">14:30 - 15:00</span>
+                        <h3 class="font-serif text-xl font-bold text-wedding-dark">Krájení dortu</h3>
+                        <p class="text-xs text-wedding-stone leading-relaxed">Krájení dortu, čas na kávu i čaj.</p>
+                    </div>
+
+                    <div class="bg-wedding-cream p-6 rounded-2xl border border-wedding-sand/40 text-center space-y-3 shadow-sm hover:shadow-md transition reveal-element">
+                        <div class="w-12 h-12 rounded-full bg-wedding-champagne text-wedding-green flex items-center justify-center mx-auto text-xl">
+                            <i class="fa-solid fa-camera"></i>
+                        </div>
+                        <span class="text-xs uppercase tracking-widest font-bold text-wedding-taupe">15:00 - 16:30</span>
+                        <h3 class="font-serif text-xl font-bold text-wedding-dark">Focení novomanželů</h3>
+                        <p class="text-xs text-wedding-stone leading-relaxed">Novomanželé odcházejí na focení, svatebčané mají volnou zábavu. Svatebčané se již mohou ubytovat v pokojích.</p>
+                    </div>
+
+                    <div class="bg-wedding-cream p-6 rounded-2xl border border-wedding-sand/40 text-center space-y-3 shadow-sm hover:shadow-md transition reveal-element">
+                        <div class="w-12 h-12 rounded-full bg-wedding-champagne text-wedding-green flex items-center justify-center mx-auto text-xl">
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <span class="text-xs uppercase tracking-widest font-bold text-wedding-taupe">16:30 - 17:15</span>
+                        <h3 class="font-serif text-xl font-bold text-wedding-dark">Svatební hry</h3>
+                        <p class="text-xs text-wedding-stone leading-relaxed">Tradiční svatební hry.</p>
+                    </div>
+
+                    <div class="bg-wedding-cream p-6 rounded-2xl border border-wedding-sand/40 text-center space-y-3 shadow-sm hover:shadow-md transition reveal-element">
+                        <div class="w-12 h-12 rounded-full bg-wedding-champagne text-wedding-green flex items-center justify-center mx-auto text-xl">
+                            <i class="fa-solid fa-heart"></i>
+                        </div>
+                        <span class="text-xs uppercase tracking-widest font-bold text-wedding-taupe">17:15 - 18:00</span>
+                        <h3 class="font-serif text-xl font-bold text-wedding-dark">První tanec</h3>
+                        <p class="text-xs text-wedding-stone leading-relaxed">Tanec novomanželů a následně i tanec se svatebčany.</p>
+                    </div>
+
+                    <div class="bg-wedding-cream p-6 rounded-2xl border border-wedding-sand/40 text-center space-y-3 shadow-sm hover:shadow-md transition reveal-element">
+                        <div class="w-12 h-12 rounded-full bg-wedding-champagne text-wedding-green flex items-center justify-center mx-auto text-xl">
+                            <i class="fa-solid fa-utensils"></i>
+                        </div>
+                        <span class="text-xs uppercase tracking-widest font-bold text-wedding-taupe">18:00+</span>
+                        <h3 class="font-serif text-xl font-bold text-wedding-dark">Raut</h3>
+                        <p class="text-xs text-wedding-stone leading-relaxed">Otevření večerního rautu.</p>
+                    </div>
+
+                    <div class="bg-wedding-cream p-6 rounded-2xl border border-wedding-sand/40 text-center space-y-3 shadow-sm hover:shadow-md transition reveal-element">
+                        <div class="w-12 h-12 rounded-full bg-wedding-champagne text-wedding-green flex items-center justify-center mx-auto text-xl">
+                            <i class="fa-solid fa-heart"></i>
+                        </div>
+                        <span class="text-xs uppercase tracking-widest font-bold text-wedding-taupe">20:00 - 20:30</span>
+                        <h3 class="font-serif text-xl font-bold text-wedding-dark">Prskavkový tanec</h3>
+                        <p class="text-xs text-wedding-stone leading-relaxed">Tanec novomanželů s prskavkami v pozadí.</p>
+                    </div>
+
+                    <div class="bg-wedding-cream p-6 rounded-2xl border border-wedding-sand/40 text-center space-y-3 shadow-sm hover:shadow-md transition reveal-element">
+                        <div class="w-12 h-12 rounded-full bg-wedding-champagne text-wedding-green flex items-center justify-center mx-auto text-xl">
+                            <i class="fa-solid fa-music"></i>
+                        </div>
+                        <span class="text-xs uppercase tracking-widest font-bold text-wedding-taupe">20:30+</span>
+                        <h3 class="font-serif text-xl font-bold text-wedding-dark">Volná zábava, DJ</h3>
+                        <p class="text-xs text-wedding-stone leading-relaxed">Tancovačky, vykrúcanky, volná zábava.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEKTOR 4: KDE A JAK / MÍSTO & INFORMACE -->
+        <section id="misto" class="py-20 px-4 bg-wedding-cream">
+            <div class="max-w-6xl mx-auto space-y-16">
+                <div class="text-center space-y-2 reveal-element">
+                    <p class="font-script-custom text-4xl sm:text-5xl text-wedding-green">Kde a jak</p>
+                    <h2 class="font-serif text-3xl sm:text-5xl uppercase tracking-wider text-wedding-dark">Místo &amp; Informace</h2>
+                    <div class="w-16 h-0.5 bg-wedding-taupe mx-auto mt-4"></div>
+                </div>
+
+                <div class="grid grid-cols-1 gap-8 max-w-4xl mx-auto">
+                    <div class="bg-wedding-champagne/30 p-8 rounded-3xl border border-wedding-sand/50 space-y-6 flex flex-col justify-between reveal-element">
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-3 text-wedding-green">
+                                <i class="fa-solid fa-map-location-dot text-2xl"></i>
+                                <h3 class="font-serif text-2xl font-bold text-wedding-dark">Bechnerův statek</h3>
+                            </div>
+                            <p class="text-sm text-wedding-stone leading-relaxed">Svatební den proběhne v prostorách Bechnerova statku.</p>
+                            <p class="text-xs text-wedding-stone/80"><i class="fa-solid fa-location-pin mr-1"></i> Masarykovo náměstí 18, 270 61 Lány</p>
+                        </div>
+                        <div class="bg-wedding-cream rounded-2xl p-4 text-center border border-wedding-sand/30 space-y-3">
+                            <a href="https://mapy.com/cs/zakladni?source=firm&amp;id=13366864&amp;ds=1&amp;x=13.9491657&amp;y=50.1247644&amp;z=17" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-2 text-xs font-semibold text-wedding-brown hover:text-wedding-green transition">
+                                <span>Otevřít v Mapy.cz</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-wedding-champagne/30 p-8 rounded-3xl border border-wedding-sand/50 space-y-6 reveal-element max-w-4xl mx-auto">
+                    <div class="flex items-center space-x-3 text-wedding-brown">
+                        <i class="fa-solid fa-shirt text-2xl"></i>
+                        <h3 class="font-serif text-2xl font-bold text-wedding-dark">Dress Code &amp; Barvy</h3>
+                    </div>
+                    <p class="text-sm text-wedding-stone leading-relaxed">Pro náš den jsme zvolili přírodní zemité tóny. Budeme rádi, když se v podobném duchu naladíte i Vy.</p>
+
+                    <div class="space-y-3 pt-2">
+                        <p class="text-xs font-bold uppercase tracking-widest text-wedding-taupe">Naše Barevná Paleta</p>
+                        <div class="flex flex-wrap gap-4">
+                            <div class="flex flex-col items-center">
+                                <div class="w-9 h-9 rounded-full shadow-sm border border-black/10" style="background-color: #526750;"></div>
+                                <span class="text-[10px] mt-1 text-wedding-stone">Zelená</span>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <div class="w-9 h-9 rounded-full shadow-sm border border-black/10" style="background-color: #4A4E35;"></div>
+                                <span class="text-[10px] mt-1 text-wedding-stone">Olivová</span>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <div class="w-9 h-9 rounded-full shadow-sm border border-black/10" style="background-color: #62482B;"></div>
+                                <span class="text-[10px] mt-1 text-wedding-stone">Hnědá</span>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <div class="w-9 h-9 rounded-full shadow-sm border border-black/10" style="background-color: #9E8875;"></div>
+                                <span class="text-[10px] mt-1 text-wedding-stone">Taupe</span>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <div class="w-9 h-9 rounded-full shadow-sm border border-black/10" style="background-color: #8C8879;"></div>
+                                <span class="text-[10px] mt-1 text-wedding-stone">Šedá</span>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <div class="w-9 h-9 rounded-full shadow-sm border border-black/10" style="background-color: #C8B39B;"></div>
+                                <span class="text-[10px] mt-1 text-wedding-stone">Písková</span>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <div class="w-9 h-9 rounded-full shadow-sm border border-black/10" style="background-color: #E1CDAF;"></div>
+                                <span class="text-[10px] mt-1 text-wedding-stone">Champagne</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEKTOR: SVĚDCI / KONTAKTY -->
+        <section id="svedci" class="py-20 px-4 bg-wedding-cream border-t border-wedding-sand/30">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12 space-y-2 reveal-element">
+                    <p class="font-script-custom text-4xl sm:text-5xl text-wedding-green">Kdyby cokoliv</p>
+                    <h2 class="font-serif text-3xl sm:text-5xl uppercase tracking-wider text-wedding-dark">Naši Svědci</h2>
+                    <p class="text-sm text-wedding-stone max-w-2xl mx-auto mt-3 leading-relaxed whitespace-pre-line">Kdybyste cokoliv potřebovali nebo si nebyli jistí, neváhejte se obrátit na naše svědky. Rádi Vám se vším poradí.</p>
+                    <div class="w-16 h-0.5 bg-wedding-taupe mx-auto mt-4"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-wedding-champagne/30 p-8 rounded-3xl border border-wedding-sand/50 text-center space-y-4 shadow-sm hover:shadow-md transition reveal-element">
+                        <div class="w-14 h-14 rounded-full bg-wedding-champagne text-wedding-green flex items-center justify-center mx-auto text-2xl">
+                            <i class="fa-solid fa-user-tie"></i>
+                        </div>
+                        <div class="space-y-1">
+                            <h3 class="font-serif text-2xl font-bold text-wedding-dark">Josefína Pečená</h3>
+                            <p class="text-xs uppercase tracking-widest font-semibold text-wedding-taupe">Svědkyně nevěsty</p>
+                        </div>
+                        <div class="space-y-2 pt-2 text-sm">
+                            <a href="tel:+33685633633" class="flex items-center justify-center space-x-2 text-wedding-brown hover:text-wedding-green transition">
+                                <i class="fa-solid fa-phone text-xs"></i><span>+33 685 633 633</span>
+                            </a>
+                            <a href="mailto:josefina.pecena@gmail.com" class="flex items-center justify-center space-x-2 text-wedding-brown hover:text-wedding-green transition break-all">
+                                <i class="fa-solid fa-envelope text-xs"></i><span>josefina.pecena@gmail.com</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="bg-wedding-champagne/30 p-8 rounded-3xl border border-wedding-sand/50 text-center space-y-4 shadow-sm hover:shadow-md transition reveal-element">
+                        <div class="w-14 h-14 rounded-full bg-wedding-champagne text-wedding-green flex items-center justify-center mx-auto text-2xl">
+                            <i class="fa-solid fa-user-tie"></i>
+                        </div>
+                        <div class="space-y-1">
+                            <h3 class="font-serif text-2xl font-bold text-wedding-dark">Hải Minh Dỗ</h3>
+                            <p class="text-xs uppercase tracking-widest font-semibold text-wedding-taupe">Svědek ženicha</p>
+                        </div>
+                        <div class="space-y-2 pt-2 text-sm">
+                            <a href="tel:+420608653111" class="flex items-center justify-center space-x-2 text-wedding-brown hover:text-wedding-green transition">
+                                <i class="fa-solid fa-phone text-xs"></i><span>+420 608 653 111</span>
+                            </a>
+                            <a href="mailto:dominh.hai96@hotmail.com" class="flex items-center justify-center space-x-2 text-wedding-brown hover:text-wedding-green transition break-all">
+                                <i class="fa-solid fa-envelope text-xs"></i><span>dominh.hai96@hotmail.com</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEKTOR: SVATEBNÍ DARY (QR PLATBA) -->
+        <section id="dary" class="py-20 px-4 bg-wedding-champagne/20 border-t border-wedding-sand/30">
+            <div class="max-w-2xl mx-auto text-center">
+                <div class="mb-12 space-y-2 reveal-element">
+                    <p class="font-script-custom text-4xl sm:text-5xl text-wedding-green">Vaše přítomnost stačí</p>
+                    <h2 class="font-serif text-3xl sm:text-5xl uppercase tracking-wider text-wedding-dark">Svatební Dar</h2>
+                    <div class="w-16 h-0.5 bg-wedding-taupe mx-auto mt-4"></div>
+                </div>
+
+                <div class="bg-wedding-cream p-8 sm:p-10 rounded-3xl shadow-lg border border-wedding-sand/50 space-y-8 reveal-element">
+                    <p class="text-sm text-wedding-stone leading-relaxed max-w-md mx-auto">Lámete-li si se svatebním darem hlavu,<br>vězte, že máme pro Vás radu.<br>Potěší nás příspěvek v jakékoli výši,<br>který nám rozpočet na líbánky zvýší.</p>
+
+                    <div class="flex justify-center">
+                        <div class="bg-white p-4 rounded-2xl border border-wedding-sand/50 shadow-sm inline-block">
+                            <img id="gift-qr-image" src="image/QR-svatebni-dar.jpg" alt="QR kód pro svatební dar" class="w-48 h-48 sm:w-56 sm:h-56 object-contain mx-auto" onerror="this.onerror=null; this.src='https://api.qrserver.com/v1/create-qr-code/?size=300x300&amp;data=Vlozte%20QR%20kod%20do%20slozky%20/image';">
+                        </div>
+                    </div>
+
+                    <div class="space-y-1">
+                        <p class="text-xs uppercase tracking-widest text-wedding-taupe font-semibold">Číslo účtu</p>
+                        <p class="font-serif text-xl sm:text-2xl text-wedding-dark tracking-wide">2716169011/3030</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEKTOR 5: DEJTE NÁM VĚDĚT (RSVP) -->
+        <section id="rsvp" class="py-20 px-4 bg-wedding-champagne/20 border-t border-wedding-sand/30">
+            <div class="max-w-2xl mx-auto">
+                <div class="text-center mb-12 space-y-2 reveal-element">
+                    <p class="font-script-custom text-4xl sm:text-5xl text-wedding-green">Dejte nám vědět</p>
+                    <h2 class="font-serif text-3xl sm:text-5xl uppercase tracking-wider text-wedding-dark">Potvrzení Účasti (RSVP)</h2>
+                    <p class="text-xs text-wedding-stone/80 mt-2">Prosíme o potvrzení účasti nejpozději do 31. ledna 2027.</p>
+                    <div class="w-16 h-0.5 bg-wedding-taupe mx-auto mt-4"></div>
+                </div>
+
+                <form id="rsvp-form" class="bg-wedding-cream p-8 sm:p-10 rounded-3xl shadow-lg border border-wedding-sand/50 space-y-6 reveal-element">
+                    <div>
+                        <label for="name" class="block text-xs uppercase tracking-widest font-semibold text-wedding-brown mb-2">Jméno a Příjmení *</label>
+                        <input type="text" id="name" name="name" required placeholder="Napište vaše jméno" class="w-full px-4 py-3 rounded-xl border border-wedding-sand focus:outline-none focus:ring-2 focus:ring-wedding-green/50 bg-wedding-cream/50 text-sm">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs uppercase tracking-widest font-semibold text-wedding-brown mb-2">Zúčastníte se? *</label>
+                        <div class="grid grid-cols-2 gap-4">
+                            <label class="cursor-pointer">
+                                <input type="radio" name="attendance" value="ano" checked class="peer sr-only">
+                                <div class="py-3 px-4 rounded-xl border border-wedding-sand text-center text-sm font-medium peer-checked:bg-wedding-green peer-checked:text-wedding-cream peer-checked:border-wedding-green transition">
+                                    <i class="fa-solid fa-check mr-1"></i> Rád/a Přijedu
+                                </div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="radio" name="attendance" value="ne" class="peer sr-only">
+                                <div class="py-3 px-4 rounded-xl border border-wedding-sand text-center text-sm font-medium peer-checked:bg-wedding-brown peer-checked:text-wedding-cream peer-checked:border-wedding-brown transition">
+                                    <i class="fa-solid fa-xmark mr-1"></i> Bohužel Nemohu
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs uppercase tracking-widest font-semibold text-wedding-brown mb-2">Doprovod (kdo přijede s Vámi)</label>
+                        <p class="text-[11px] text-wedding-stone/80 mb-3">Přidejte prosím jméno každé osoby, která s Vámi přijede, a zvolte, zda jde o dospělého nebo dítě.</p>
+                        <div id="guest-list" class="space-y-2.5"></div>
+                        <button type="button" id="add-guest-btn" class="mt-3 inline-flex items-center justify-center space-x-2 border border-dashed border-wedding-taupe text-wedding-brown hover:bg-wedding-champagne/40 px-4 py-2.5 rounded-xl text-xs font-semibold transition">
+                            <i class="fa-solid fa-plus"></i>
+                            <span>Přidat osobu</span>
+                        </button>
+                        <input type="hidden" id="guests-json" name="guests_json" value="[]">
+                        <input type="hidden" id="guests-summary" name="guests_summary" value="">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs uppercase tracking-widest font-semibold text-wedding-brown mb-2">Budete přespávat?</label>
+                        <div class="grid grid-cols-2 gap-4">
+                            <label class="cursor-pointer">
+                                <input type="radio" name="overnight" value="ano" class="peer sr-only">
+                                <div class="py-2.5 px-4 rounded-xl border border-wedding-sand text-center text-sm font-medium peer-checked:bg-wedding-taupe peer-checked:text-wedding-cream transition">
+                                    <i class="fa-solid fa-bed mr-1"></i> Ano, přespíme
+                                </div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="radio" name="overnight" value="ne" checked class="peer sr-only">
+                                <div class="py-2.5 px-4 rounded-xl border border-wedding-sand text-center text-sm font-medium peer-checked:bg-wedding-taupe peer-checked:text-wedding-cream transition">
+                                    <i class="fa-solid fa-house mr-1"></i> Ne, odjíždíme
+                                </div>
+                            </label>
+                        </div>
+                        <div id="overnight-notice" class="hidden mt-4 p-5 rounded-xl border border-red-200 bg-red-50 text-sm text-wedding-dark leading-relaxed">
+                            <i class="fa-solid fa-circle-info mr-2 text-red-400"></i>
+                            Ubytování Vám můžeme zajistit, orientační cena je 1500,- os./noc. Cena a úhrada bude upřesněna.
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="diet" class="block text-xs uppercase tracking-widest font-semibold text-wedding-brown mb-2">Stravovací Omezení / Dieta</label>
+                        <input type="text" id="diet" name="diet" placeholder="Např. Vegetarián, Bezlepková..." class="w-full px-4 py-3 rounded-xl border border-wedding-sand focus:outline-none focus:ring-2 focus:ring-wedding-green/50 bg-wedding-cream/50 text-sm">
+                    </div>
+
+                    <div>
+                        <label for="note" class="block text-xs uppercase tracking-widest font-semibold text-wedding-brown mb-2">Vzkaz pro snoubence</label>
+                        <textarea id="note" name="note" rows="3" placeholder="Máte nějaké přání nebo vzkaz?" class="w-full px-4 py-3 rounded-xl border border-wedding-sand focus:outline-none focus:ring-2 focus:ring-wedding-green/50 bg-wedding-cream/50 text-sm resize-none"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-wedding-green text-wedding-cream hover:bg-wedding-olive py-4 rounded-xl uppercase tracking-widest text-xs font-semibold shadow-md transition duration-300">
+                        Odeslat Potvrzení
+                    </button>
+
+                    <div id="rsvp-success" class="hidden p-4 bg-wedding-champagne text-wedding-olive rounded-xl text-center text-sm font-medium border border-wedding-sand">
+                        <i class="fa-solid fa-circle-check text-green-600 mr-2 text-lg"></i>
+                        Děkujeme! Vaše potvrzení bylo úspěšně odesláno.
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- SEKTOR GALERIE / NAHRÁVÁNÍ FOTEK -->
+        <section id="galerie" class="py-20 px-4 bg-wedding-cream border-t border-wedding-sand/30">
+            <div class="max-w-2xl mx-auto text-center">
+                <div class="mb-10 space-y-2 reveal-element">
+                    <p class="font-script-custom text-4xl sm:text-5xl text-wedding-green">Momentky ze svatby</p>
+                    <h2 class="font-serif text-3xl sm:text-5xl uppercase tracking-wider text-wedding-dark">Sdílejte Fotky</h2>
+                    <p class="text-sm text-wedding-stone max-w-lg mx-auto mt-2">Podařilo se vám zachytit hezký moment? Nahrajte fotky z telefonu přímo k nám (bez přihlašování a vytváření účtu).</p>
+                    <div class="w-16 h-0.5 bg-wedding-taupe mx-auto mt-4"></div>
+                </div>
+
+                <form id="photo-upload-form" class="bg-wedding-champagne/30 border border-wedding-sand/50 rounded-3xl p-8 sm:p-10 space-y-6 text-left shadow-lg reveal-element">
+                    <div>
+                        <label for="uploader-name" class="block text-xs uppercase tracking-widest font-semibold text-wedding-brown mb-2">Vaše Jméno (volitelné)</label>
+                        <input type="text" id="uploader-name" placeholder="Např. Teta Alena" class="w-full px-4 py-3 rounded-xl border border-wedding-sand focus:outline-none focus:ring-2 focus:ring-wedding-green/50 bg-wedding-cream/60 text-sm">
+                    </div>
+
+                    <div>
+                        <label for="photo-input-files" class="block text-xs uppercase tracking-widest font-semibold text-wedding-brown mb-2">Vyberte fotky z mobilu nebo počítače *</label>
+                        <input type="file" id="photo-input-files" multiple accept="image/*" required class="w-full p-3 rounded-xl border border-wedding-sand bg-wedding-cream/60 text-xs cursor-pointer focus:outline-none">
+                        <p class="text-[11px] text-wedding-stone/80 mt-1.5"><i class="fa-solid fa-circle-info mr-1"></i> Můžete vybrat i více fotek najednou.</p>
+                    </div>
+
+                    <button type="submit" id="upload-submit-btn" class="w-full bg-wedding-green text-wedding-cream hover:bg-wedding-olive py-4 rounded-xl uppercase tracking-widest text-xs font-semibold shadow-md transition duration-300 flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-cloud-arrow-up text-base"></i>
+                        <span>Nahraj Fotky</span>
+                    </button>
+
+                    <div id="upload-progress-container" class="hidden space-y-2">
+                        <div class="w-full bg-wedding-cream rounded-full h-2.5 overflow-hidden border border-wedding-sand">
+                            <div id="upload-progress-bar" class="bg-wedding-green h-2.5 rounded-full transition-all duration-300" style="width: 0%"></div>
+                        </div>
+                        <p id="upload-status-text" class="text-xs text-center text-wedding-brown font-medium"></p>
+                    </div>
+
+                    <div id="upload-success-msg" class="hidden p-4 bg-wedding-champagne text-wedding-olive rounded-xl text-center text-sm font-medium border border-wedding-sand">
+                        <i class="fa-solid fa-circle-check text-green-600 mr-2 text-lg"></i>
+                        Děkujeme! Fotky byly úspěšně nahrány.
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-wedding-olive text-wedding-cream py-12 text-center border-t border-wedding-taupe/30">
+        <div class="max-w-4xl mx-auto px-4 space-y-4">
+            <p class="font-script-custom text-4xl sm:text-5xl text-wedding-champagne">Těšíme se na vás!</p>
+            <p class="font-serif uppercase tracking-widest text-sm text-wedding-sand">Natálie &amp; Matěj | 26.06.2027</p>
+            <div class="text-xs text-wedding-sand/60 pt-4">
+                Vyrobeno s láskou ♡ | Natálie &amp; Matěj
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxvF0RhaO9bEXXhtXd3vDwICwUhiid1x-_40-jSNGTz8Dnwjlvn_d5zQv42jWde8Ke_bQ/exec';
+
+        document.addEventListener("DOMContentLoaded", () => {
+            setupIntersectionObserver();
+            setupCountdown();
+            setupEventListeners();
+            setupPhotoUploadHandler();
+        });
+
+        function setupEventListeners() {
+            // Mobile Menu Toggle
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileBtn && mobileMenu) {
+                mobileBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+                mobileMenu.querySelectorAll('a').forEach(l => l.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+            }
+
+            // Guest Management in RSVP Form
+            let guestRowCounter = 0;
+
+            function updateGuestsHiddenFields() {
+                const rows = document.querySelectorAll('#guest-list .guest-row');
+                const guests = [];
+                rows.forEach(row => {
+                    const name = row.querySelector('.guest-name-input').value.trim();
+                    const type = row.querySelector('.guest-type-select').value;
+                    if (name) guests.push({ name, type });
+                });
+                document.getElementById('guests-json').value = JSON.stringify(guests);
+                document.getElementById('guests-summary').value = guests
+                    .map(g => `${g.name} (${g.type})`)
+                    .join('; ');
+            }
+
+            function addGuestRow(prefillName = '', prefillType = 'dospělý') {
+                guestRowCounter++;
+                const row = document.createElement('div');
+                row.className = 'guest-row flex flex-col sm:flex-row gap-2 items-stretch bg-wedding-champagne/20 border border-wedding-sand/40 rounded-xl p-3';
+                row.dataset.guestId = guestRowCounter;
+                row.innerHTML = `
+                    <input type="text" class="guest-name-input flex-1 px-3 py-2 rounded-lg border border-wedding-sand bg-wedding-cream/50 text-sm focus:outline-none focus:ring-2 focus:ring-wedding-green/50" placeholder="Jméno a příjmení osoby" value="${prefillName}">
+                    <div class="flex gap-2">
+                        <select class="guest-type-select px-3 py-2 rounded-lg border border-wedding-sand bg-wedding-cream/50 text-sm focus:outline-none focus:ring-2 focus:ring-wedding-green/50">
+                            <option value="dospělý" ${prefillType === 'dospělý' ? 'selected' : ''}>Dospělý</option>
+                            <option value="dítě" ${prefillType === 'dítě' ? 'selected' : ''}>Dítě</option>
+                        </select>
+                        <button type="button" class="remove-guest-btn text-red-500 hover:text-red-700 px-2" aria-label="Odebrat osobu">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </div>
+                `;
+                document.getElementById('guest-list').appendChild(row);
+
+                row.querySelector('.guest-name-input').addEventListener('input', updateGuestsHiddenFields);
+                row.querySelector('.guest-type-select').addEventListener('change', updateGuestsHiddenFields);
+                row.querySelector('.remove-guest-btn').addEventListener('click', () => {
+                    row.remove();
+                    updateGuestsHiddenFields();
+                });
+
+                updateGuestsHiddenFields();
+            }
+
+            function clearGuestList() {
+                document.getElementById('guest-list').innerHTML = '';
+                updateGuestsHiddenFields();
+            }
+
+            document.getElementById('add-guest-btn').addEventListener('click', () => addGuestRow());
+            if (document.getElementById('guest-list').children.length === 0) {
+                addGuestRow();
+            }
+
+            // Overnight Notice Handler
+            const overnightNotice = document.getElementById('overnight-notice');
+            const overnightRadios = document.querySelectorAll('input[name="overnight"]');
+            function updateOvernightNotice() {
+                const checked = document.querySelector('input[name="overnight"]:checked');
+                if (overnightNotice) {
+                    overnightNotice.classList.toggle('hidden', !(checked && checked.value === 'ano'));
+                }
+            }
+            overnightRadios.forEach(radio => radio.addEventListener('change', updateOvernightNotice));
+            updateOvernightNotice();
+
+            // RSVP Submit Handler
+            document.getElementById('rsvp-form').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const form = e.target;
+                const submitBtn = form.querySelector('button[type="submit"]');
+                const successMsg = document.getElementById('rsvp-success');
+
+                updateGuestsHiddenFields();
+
+                submitBtn.disabled = true;
+                submitBtn.innerText = 'Odesílám...';
+
+                try {
+                    const response = await fetch(SCRIPT_URL, {
+                        method: 'POST',
+                        body: new FormData(form)
+                    });
+
+                    if (response.ok) {
+                        successMsg.classList.remove('hidden');
+                        form.reset();
+                        clearGuestList();
+                        addGuestRow();
+                    } else {
+                        alert('Při odesílání došlo k chybě. Zkuste to prosím znovu.');
+                    }
+                } catch (error) {
+                    alert('Při odesílání došlo k chybě. Zkuste to prosím znovu.');
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = 'Odeslat Potvrzení';
+                }
+            });
+        }
+
+        // Photo Upload Handler
+        function setupPhotoUploadHandler() {
+            const form = document.getElementById('photo-upload-form');
+            if (!form) return;
+
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const filesInput = document.getElementById('photo-input-files');
+                const uploaderInput = document.getElementById('uploader-name');
+                const submitBtn = document.getElementById('upload-submit-btn');
+                const progressContainer = document.getElementById('upload-progress-container');
+                const progressBar = document.getElementById('upload-progress-bar');
+                const statusText = document.getElementById('upload-status-text');
+                const successMsg = document.getElementById('upload-success-msg');
+
+                const files = filesInput.files;
+                if (!files || files.length === 0) {
+                    alert('Vyberte prosím alespoň jednu fotku.');
+                    return;
+                }
+
+                submitBtn.disabled = true;
+                progressContainer.classList.remove('hidden');
+                successMsg.classList.add('hidden');
+
+                try {
+                    const encodedFiles = [];
+                    for (let i = 0; i < files.length; i++) {
+                        const file = files[i];
+                        statusText.innerText = `Příprava fotky ${i + 1} z ${files.length}...`;
+                        progressBar.style.width = `${Math.round(((i + 1) / files.length) * 40)}%`;
+                        
+                        const base64Data = await readFileAsBase64(file);
+                        encodedFiles.push({
+                            name: file.name,
+                            mimeType: file.type,
+                            base64: base64Data
+                        });
+                    }
+
+                    statusText.innerText = 'Odesílám fotky na server...';
+                    progressBar.style.width = '70%';
+
+                    const payload = {
+                        action: 'uploadPhotos',
+                        uploader: uploaderInput.value.trim() || 'Anonymní host',
+                        files: encodedFiles
+                    };
+
+                    const response = await fetch(SCRIPT_URL, {
+                        method: 'POST',
+                        body: JSON.stringify(payload)
+                    });
+
+                    progressBar.style.width = '100%';
+
+                    if (response.ok) {
+                        statusText.innerText = 'Nahrávání dokončeno!';
+                        successMsg.classList.remove('hidden');
+                        form.reset();
+                    } else {
+                        alert('Při nahrávání fotek došlo k chybě. Zkuste to prosím znovu.');
+                    }
+                } catch (error) {
+                    console.error("Upload error:", error);
+                    alert('Při nahrávání fotek došlo k chybě. Zkuste to prosím znovu.');
+                } finally {
+                    submitBtn.disabled = false;
+                    setTimeout(() => {
+                        progressContainer.classList.add('hidden');
+                        progressBar.style.width = '0%';
+                    }, 4000);
+                }
+            });
+        }
+
+        function readFileAsBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => {
+                    const result = reader.result;
+                    const base64 = result.split(',')[1];
+                    resolve(base64);
+                };
+                reader.onerror = error => reject(error);
+                reader.readAsDataURL(file);
+            });
+        }
+
+        function setupCountdown() {
+            const weddingDate = new Date('June 26, 2027 12:00:00').getTime();
+            function update() {
+                const now = new Date().getTime();
+                const dist = weddingDate - now;
+                if (dist < 0) {
+                    document.getElementById('countdown').innerHTML = "<div class='col-span-4 text-center font-serif text-2xl text-wedding-green'>Dnes je náš svatební den! 🎉</div>";
+                    return;
+                }
+                document.getElementById('cd-days').innerText = String(Math.floor(dist / (1000 * 60 * 60 * 24))).padStart(2, '0');
+                document.getElementById('cd-hours').innerText = String(Math.floor((dist % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+                document.getElementById('cd-minutes').innerText = String(Math.floor((dist % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+                document.getElementById('cd-seconds').innerText = String(Math.floor((dist % (1000 * 60)) / 1000)).padStart(2, '0');
+            }
+            setInterval(update, 1000);
+            update();
+        }
+
+        function setupIntersectionObserver() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.reveal-element').forEach(el => observer.observe(el));
+        }
+    </script>
+</body>
+</html>
